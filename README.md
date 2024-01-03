@@ -18,17 +18,15 @@ git clone https://github.com/j32u4ukh/express-project-seed.git
 
 ![package.json](/repo/images/package_json.png)
 
-#### 3. package-lock.json
-
-將下圖紅框內的資訊，修改成自己專案的資訊
-
-![package-lock.json](/repo/images/package_lock_json.png)
+注意! 不需要修改 `package-lock.json`!
 
 ### 3. 安裝依賴套件
 
 ```
 npm install
 ```
+
+執行完成後，`package-lock.json` 內的專案名稱，會被修改成和 `package.json` 中定義的專案名稱一樣。
 
 ### 4. 移除原始 git 檔案
 
@@ -38,6 +36,34 @@ npm install
 * LICENSE
 * README.md (當前檔案，也可不刪除，修改內容即可)
 * repo 資料夾
+
+### 5. 再初始化成 git 專案
+
+透過 initial-branch 設置初始化分支名稱，Github 的初始分支會叫做 `main`
+
+```
+git init --initial-branch=main
+```
+
+告訴 git 要將檔案傳到遠端的哪裡，origin 用來代表後面那串網址，用 origin 只是習慣。
+
+遠端位置形式分為 HTTPS 和 SSH，本例為 HTTPS
+
+```
+git remote add origin https://github.com/github帳號/repository名稱.git
+```
+
+將遠端分支與本地分支合併
+
+```
+git pull origin master --allow-unrelated-histories
+```
+
+更新遠端分支
+
+```
+git push
+```
 
 ---
 
