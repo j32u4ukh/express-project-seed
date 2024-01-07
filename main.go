@@ -50,7 +50,9 @@ func copyProject(folder string, name string, description string) error {
 			return errors.Wrap(err, "生成資料夾時發生錯誤")
 		}
 	}
+	// public
 	copyFolder("./seed/public", filepath.Join(folder, "public"))
+	// view
 	copyFolder("./seed/views", filepath.Join(folder, "views"))
 	path := filepath.Join(folder, "views/layouts/main.hbs")
 	err = modifyFile(path,
@@ -59,7 +61,9 @@ func copyProject(folder string, name string, description string) error {
 	if err != nil {
 		fmt.Printf("修改專案名稱時發生錯誤(%s)\n", path)
 	}
+	// index.js
 	copyFile("./seed/index.js", filepath.Join(folder, "index.js"))
+	// package.json
 	path = filepath.Join(folder, "package.json")
 	copyFile("./seed/package.json", path)
 	err = modifyFile(path,
@@ -76,7 +80,10 @@ func copyProject(folder string, name string, description string) error {
 			fmt.Printf("修改專案描述時發生錯誤(%s)\n", path)
 		}
 	}
+	// package-lock.json
 	copyFile("./seed/package-lock.json", filepath.Join(folder, "package-lock.json"))
+	// .gitignore
+	copyFile("./seed/.gitignore", filepath.Join(folder, ".gitignore"))
 	return nil
 }
 
