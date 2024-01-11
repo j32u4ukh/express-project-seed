@@ -7,41 +7,43 @@
 
 後續 `git` 指令則由使用者自己執行。
 
-### 1. 下載專案
+### 1. 下載執行檔與種子專案
+
+[下載位置](https://github.com/j32u4ukh/express-project-seed/releases)
+
+### 2. 執行 seed 指令
+
+seed 指令將會依序執行以下操作:
+1. 在 `output` 指定的資料夾中，生成名為 `name` 的專案資料夾。
+2. 將種子專案中的內容複製到名為 `name` 的資料夾。
+3. 將 `name` 取代預設專案名稱。
+4. 安裝依賴套件(`npm install`)
+
+> description 為可選參數
+
+#### Windows
 
 ```
-git clone https://github.com/j32u4ukh/express-project-seed.git
+.\seed.exe -output 專案的上層資料夾 -name 專案名稱 [-description 專案描述]
 ```
 
-### 2. 修改專案資訊
-
-#### 1. 資料夾名稱
-#### 2. package.json
-
-將下圖紅框內的資訊，修改成自己專案的資訊
-
-![package.json](/repo/images/package_json.png)
-
-注意! 不需要修改 `package-lock.json`!
-
-### 3. 安裝依賴套件
-
+ex:
 ```
-npm install
+.\seed.exe -output "../express_test" -name "temp_project"
 ```
 
-執行完成後，`package-lock.json` 內的專案名稱，會被修改成和 `package.json` 中定義的專案名稱一樣。
+#### Linux/Mac
 
-### 4. 移除原始 git 檔案
+```
+./seed -output 專案輸出的資料夾 -name 專案名稱 [-description 專案描述]
+```
 
-移除下列檔案
+ex:
+```
+./seed -output "../express_test" -name "temp_project"
+```
 
-* .git
-* LICENSE
-* README.md (當前檔案，也可不刪除，修改內容即可)
-* repo 資料夾
-
-### 5. 再初始化成 git 專案
+### 3. 初始化成 git 專案
 
 透過 initial-branch 設置初始化分支名稱，Github 的初始分支會叫做 `main`
 
@@ -60,7 +62,7 @@ git remote add origin https://github.com/github帳號/repository名稱.git
 將遠端分支與本地分支合併
 
 ```
-git pull origin master --allow-unrelated-histories
+git pull origin main --allow-unrelated-histories
 ```
 
 更新遠端分支
@@ -72,6 +74,8 @@ git push
 ---
 
 ## 原始專案初始化流程
+
+如果不使用種子專案，原本要使用下方流程來初始化一個 Express 專案
 
 ### 1. npm init
 
